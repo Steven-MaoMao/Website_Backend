@@ -3,7 +3,6 @@ const mysql = require("mysql")
 
 const app = express()
 
-var message = {};
 var rows = {};
 var page;
 
@@ -27,6 +26,7 @@ app.get("/getmessage", (req, res, next) => {
 	connection.query(sql, function (err, result) {
 		if (err) {
 			console.log("[database select error (num)] - ", err.message);
+			res.send("error")
 			return;
 		}
 		rows = result;
@@ -56,6 +56,7 @@ app.get("/getmessage", (req, res) => {
 	connection.query(sql, function (err, result) {
 		if (err) {
 			console.log("[database select error] - ", err.message);
+			res.send("error")
 			return;
 		}
 		messages = result;
@@ -82,8 +83,11 @@ app.get("/sendmessage", (req, res) => {
 	connection.query(sql, sqlParams, function (err, result) {
 		if (err) {
 			console.log("[database insert error] - ", err.message);
+			res.send("error")
 			return;
 		}
+
+		res.send("success");
 	});
 
 	connection.end();
@@ -104,8 +108,11 @@ app.get("/sendcomment", (req, res) => {
 	connection.query(sql, sqlParams, function (err, result) {
 		if (err) {
 			console.log("[database insert error] - ", err.message);
+			res.send("error")
 			return;
 		}
+
+		res.send("success");
 	});
 
 	connection.end();
