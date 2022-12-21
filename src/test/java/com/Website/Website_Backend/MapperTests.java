@@ -23,7 +23,7 @@ public class MapperTests {
     private MessageCommentMapper messageCommentMapper;
 
     @Test
-    public void testGetMessageBoard() throws IOException {
+    public void testMessageBoard_selectByPage() throws IOException {
         int page = 1;
 
         String resource = "mybatis-config.xml";
@@ -32,13 +32,13 @@ public class MapperTests {
 
         try (SqlSession session = sqlSessionFactory.openSession(true)) {
             MessageBoardMapper mapper = session.getMapper(MessageBoardMapper.class);
-            List<Data> dataList = mapper.getMessageBoard(page);
+            List<Data> dataList = mapper.selectByPage(page);
             System.out.println(dataList);
         }
     }
 
     @Test
-    public  void testSetMessageBoard() throws IOException {
+    public  void testMessageBoard_insert() throws IOException {
         String name = "test";
         String message = "test2";
 
@@ -48,12 +48,12 @@ public class MapperTests {
 
         try (SqlSession session = sqlSessionFactory.openSession(true)) {
             MessageBoardMapper mapper = session.getMapper(MessageBoardMapper.class);
-            mapper.setMessageBoard(name, message);
+            mapper.insert(name, message);
         }
     }
 
     @Test
-    public  void testSelectCount() throws IOException {
+    public  void testMessageBoard_selectCount() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -66,7 +66,7 @@ public class MapperTests {
     }
 
     @Test
-    public void testGetMessageComment() throws IOException {
+    public void testMessageComment_insert() throws IOException {
         String name = "test";
         String comment = "test1";
         int parent = 1;
@@ -77,7 +77,7 @@ public class MapperTests {
 
         try (SqlSession session = sqlSessionFactory.openSession(true)) {
             MessageCommentMapper mapper = session.getMapper(MessageCommentMapper.class);
-            mapper.setMessageComment(name, comment, parent);
+            mapper.insert(name, comment, parent);
         }
     }
 }

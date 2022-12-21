@@ -6,5 +6,5 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface MessageCommentMapper {
-    void setMessageComment(@Param("name") String name, @Param("comment") String comment, @Param("parent") int parent);
+    void insert(@Param("name") String name, @Param("comment") String comment, @Param("parent") int parent);
 }

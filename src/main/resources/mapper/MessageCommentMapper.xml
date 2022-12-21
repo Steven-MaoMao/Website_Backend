@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Website.Website_Backend.Mapper.MessageCommentMapper">
-    <insert id="setMessageComment">
+    <insert id="insert">
         insert into Message_Comment (name, comment, time, parent) values (#{name}, #{comment}, now(), #{parent})
     </insert>
 </mapper>

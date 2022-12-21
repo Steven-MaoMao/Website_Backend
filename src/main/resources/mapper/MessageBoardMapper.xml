@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Website.Website_Backend.Mapper.MessageBoardMapper">
-    <select id="getMessageBoard" resultType="com.Website.Website_Backend.Model.Data">
+    <select id="selectByPage" resultType="com.Website.Website_Backend.Model.Data">
         select
         Message_Board.id as m_id,
         Message_Board.name as m_name,
@@ -20,7 +20,7 @@
         order by m_id desc, c_id desc
     </select>
 
-    <insert id="setMessageBoard">
+    <insert id="insert">
         insert into Message_Board (name, message, time) values (#{name}, #{message}, now())
     </insert>
 

@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface MessageBoardMapper {
-    List<Data> getMessageBoard(@Param("page") int page);
-    void setMessageBoard(@Param("name") String name, @Param("message") String message);
+    List<Data> selectByPage(@Param("page") int page);
+    void insert(@Param("name") String name, @Param("message") String message);
     int selectCount();
 }
